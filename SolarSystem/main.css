@@ -21,6 +21,50 @@ body{
     align-items: center;
 }
 
+.modal-content-custom{
+    background-color: transparent;
+    border: 1px solid whitesmoke;
+    border-inline: 0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: whitesmoke;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+    
+}
+
+.table-custom{
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+    border-color: transparent;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: var(--bs-modal-width);
+        margin-right: auto;
+        /* margin-left: auto; */
+    }
+}
+
+.modal-backdrop {
+    --bs-backdrop-zindex: 1050;
+    --bs-backdrop-bg: #000;
+    --bs-backdrop-opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--bs-backdrop-zindex);
+    width: 100vw;
+    height: 100vh;
+}
+
 /*--------------------------- Neptune ---------------------------*/
 .neptune-container{
     position: absolute;
@@ -30,7 +74,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .neptune{
@@ -56,7 +100,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .uranus{
@@ -73,6 +117,24 @@ body{
     animation: uranus-translation 73954ms linear infinite, uranus-rotation 8000ms linear infinite;
 }
 
+.uranus-orbit{
+    position: absolute;
+    height: 104px;
+    width: 95px;
+    border-radius: 100%;
+    animation: uranus-translation 73954ms linear infinite;
+}
+
+.uranus-ring 
+{
+    width:  90px;
+    height: 100px;
+    border-inline: solid 9px #268895;
+    border-radius: 60%;
+    position: absolute;
+    transform: rotate3d(1,1,0,95deg);
+}
+
 /*--------------------------- Saturn ---------------------------*/
 .saturn-container{
     position: absolute;
@@ -82,7 +144,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .saturn{
@@ -99,39 +161,24 @@ body{
     animation: saturn-translation 53954ms linear infinite, saturn-rotation 7000ms linear infinite;
 }
 
-.ring 
-{
-    width:  305px;
-    height: 305px;
-    border: solid 50px #b8b08d;
-    border-radius: 50%;
-    top: 95px;
+.saturn-orbit{
     position: absolute;
-    left: -100px;
+    height: 112px;
+    width: 186px;
+    border-radius: 100%;
+    animation: saturn-translation 53954ms linear infinite;
+}
+
+.saturn-ring 
+{
+    width:  184px;
+    height: 120px;
+    border-inline: solid 35px #b8b08d;
+    border-radius: 60%;
+    position: absolute;
     transform: rotate3d(1,0,0,75deg);
 }
 
-.up
-{
-    position: relative;
-    width: 200px;
-    height: 100px;
-    border-radius: 100px 100px 0 0;
-    background-color: #cc5803;
-    top: -200px;
-    overflow: hidden;
-}
-.up:before
-{
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 25px;
-    border-radius: 20px;
-    left: 70px;
-    background-color: #f29559;
-    box-shadow: -75px 25px #cc5;
-}
 
 /*--------------------------- Jupiter ---------------------------*/
 .jupiter-container{
@@ -142,7 +189,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .jupiter{
@@ -168,7 +215,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .mars{
@@ -195,7 +242,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .earth{
@@ -217,7 +264,7 @@ body{
     height: 60px;
     width: 60px;
     border-radius: 100%;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
     animation: earth-translation 23954ms linear infinite;
 }
 
@@ -250,7 +297,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .venus{
@@ -276,7 +323,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:  1px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.26);
 }
 
 .mercury{
