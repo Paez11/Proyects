@@ -21,6 +21,14 @@ body{
     align-items: center;
 }
 
+.modal-custom{
+    display: grid;
+    justify-content: start;
+    margin-left: 10vh;
+    float: left;
+    overflow: hidden;
+}
+
 .modal-content-custom{
     background-color: transparent;
     border: 1px solid whitesmoke;
@@ -33,7 +41,11 @@ body{
     pointer-events: auto;
     background-clip: padding-box;
     outline: 0;
-    
+    font-family: 'DO Futuristic', sans-serif;
+    font-size: small;
+    font-weight: lighter;
+    text-align: justify;
+    letter-spacing: 1px;
 }
 
 .table-custom{
@@ -43,6 +55,10 @@ body{
     border-color: transparent;
     caption-side: bottom;
     border-collapse: collapse;
+}
+
+#value-style{
+    padding-left: 15px;
 }
 
 @media (min-width: 576px){
@@ -63,6 +79,10 @@ body{
     z-index: var(--bs-backdrop-zindex);
     width: 100vw;
     height: 100vh;
+}
+
+.modal-backdrop.show {
+    opacity: 0;
 }
 
 /*--------------------------- Neptune ---------------------------*/
