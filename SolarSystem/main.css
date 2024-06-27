@@ -9,7 +9,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./assets/milky-way-5.png);
+    background-image: url(./assets/milky-way-3.jpg);
     background-size: cover;
 }
 
@@ -31,8 +31,6 @@ body{
 
 .modal-content-custom{
     background-color: transparent;
-    border: 1px solid whitesmoke;
-    border-inline: 0px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -48,9 +46,28 @@ body{
     letter-spacing: 1px;
 }
 
+.modal-header{
+    border: 1px solid whitesmoke;
+    border-inline: 0px;
+    border-bottom: 0px;
+    border-image: linear-gradient(to right, whitesmoke 40%, transparent 95%)100% 1;
+    border-radius: 3.5%;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.modal-body{
+    border: 1px solid;
+    border-image: linear-gradient(to left, whitesmoke 40%, transparent 95%)100% 1;
+    border-radius: 3.5%;
+    border-inline: 0px;
+    border-top: 0px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
 .table-custom{
     width: 100%;
-    margin-bottom: 1rem;
+    margin-block: 0.5rem;
     vertical-align: top;
     border-color: transparent;
     caption-side: bottom;
@@ -83,6 +100,44 @@ body{
 
 .modal-backdrop.show {
     opacity: 0;
+}
+
+.btn-position{
+    position: fixed;
+    top: 1%;
+    right: 1%;
+    z-index: 99;
+}
+
+.custom-btn{
+    background-color: transparent;
+    border: none;
+    border-radius: 60%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px;
+}
+.custom-btn svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(245, 245, 245, 0.51);
+  }  
+.custom-btn:hover {
+background-color: rgba(0, 0, 0, 0.1); 
+}
+.custom-btn:focus,
+.custom-btn:focus-visible {
+outline: 2px solid blue; 
+}
+.custom-btn:active {
+    background-color: whitesmoke; 
+}
+
+.planet:hover{
+    border: 0.5px solid rgba(255, 255, 255, 50%);
 }
 
 /*--------------------------- Neptune ---------------------------*/
@@ -242,7 +297,7 @@ body{
     border-radius: 50%;
     background: url(./assets/planets2/mars.png);
     box-shadow:  33px 33px 65px #511400,
-                -33px -33px 65px #d73600;
+                -3px 0px 65px #d73600;
     background-repeat: repeat;
     background-size: 210%;
 }
