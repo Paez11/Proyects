@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(planets);
 
     let activePlanetElement = undefined;
-    let listenersInitialized = false;
 
     function updateModal(planetData) {
         const modalTitle = document.getElementById('infoModalLabel');
@@ -32,17 +31,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     
         // Show modal
-        const modalElement = document.getElementById('infoModal');
-        const modal = new bootstrap.Modal(modalElement);
-        
-        if (activePlanetElement && !listenersInitialized) {
-            console.log("entra -->", activePlanetElement);
-            initializeModalListeners();
-        }
+        //const modalElement = document.getElementById('infoModal');
+        //const modal = new bootstrap.Modal(modalElement);
 
-        modal.show();
+        //modal.show();
     }
     
+    // Event listeners for planet elements. Full the modal with the array info
+    document.querySelectorAll('.planet').forEach(planetElement => {
+        planetElement.addEventListener('click', () => {
+            const planetKey = planetElement.getAttribute('data-planet');
+            const planetData = planets[planetKey];
+            activePlanetElement = document.querySelector(`.${planetKey}-container`);
+            if (planetData) {
+                updateModal(planetData);
+                //initializeModalListeners();
+                /**
+                $('#infoModal').modal('show').on('shown.bs.modal', () => {
+                    toggleBorderStyle({ target: activePlanetElement });
+                });
+                */
+            }
+        });
+    });
+
+    //target and select the border-planet that is click
     function initializeModalListeners() {
         const modalElement = document.getElementById('infoModal')
 
@@ -61,13 +74,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 activePlanetElement.classList.remove('selected');
             }
         });
-    
-        listenersInitialized = true; // Mark listeners as initialized
     }
-    
+
+    //change the border of the container for each planet when select one
     function toggleBorderStyle(event) {
         const element = event.target;
         if (element.classList.contains('selected')) {
+            console.log("event -->", event);
             element.classList.remove('selected');
             element.style.border = '0.5px solid rgba(255, 255, 255, 80%)'; // Revert to original style
         } else {
@@ -75,31 +88,25 @@ document.addEventListener('DOMContentLoaded', function () {
             element.style.border = '0.5px solid rgba(255, 255, 255, 0.26)';
         }
     }
-    
-    // Event listeners for planet elements
-    document.querySelectorAll('.planet').forEach(planetElement => {
-        planetElement.addEventListener('click', () => {
-            const planetKey = planetElement.getAttribute('data-planet');
-            const planetData = planets[planetKey];
-            activePlanetElement = document.querySelector(`.${planetKey}-container`);
-            if (planetData) {
-                updateModal(planetData);
-            }
-        });
-    });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     const radio3D = document.getElementById('changeView3D');
     const radio2D = document.getElementById('changeView2D');
-    console.log("empieza");
-    // Función para cambiar el estilo
+    const link3D = document.querySelector('link[href="main3d.css"]');
+    const link2D = document.querySelector('link[href="main.css"]');
+
+    //change style view
     function changeViewStyle() {
       if (radio3D.checked) {
-        document.body.style.backgroundColor = 'lightblue'; 
+        document.body.style.backgroundColor = 'lightblue';
+        link2D.disabled = true;
+        link3D.disabled = false; 
         console.log("3d");
       } else if (radio2D.checked) {
         document.body.style.backgroundColor = 'lightgreen'; 
+        link2D.disabled = false;
+        link3D.disabled = true;
         console.log("2d");
       }
     }
@@ -109,4 +116,4 @@ document.addEventListener('DOMContentLoaded', () => {
     radio2D.addEventListener('change', changeViewStyle);
     
     changeViewStyle();
-  });
+});
