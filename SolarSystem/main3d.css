@@ -140,6 +140,47 @@ outline: 2px solid blue;
     border: 0.5px solid rgba(255, 255, 255, 50%);
 }
 
+.collapse-custom{
+    min-height: 120px;
+    z-index: 99;
+    margin-right: 1vh;
+}
+
+.card-custom{
+    background-color: transparent;
+    color: whitesmoke;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+    vertical-align: baseline;
+    font-family: 'DO Futuristic', sans-serif;
+    font-size: medium;
+    letter-spacing: 4px;
+    border-block: 1px solid;
+    border-radius: 25%;
+    background-origin: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card{
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: rgb(0 0 0 / 0%);
+}
+
+.form-check-input:checked[type=radio] {
+    --bs-form-check-bg-image: url();
+}
+.form-check-input {
+    --bs-form-check-bg: #ffffff1f;
+    margin-top: .11em;
+}
+.form-check-input:checked {
+    background-color: #0d6efd42;
+}
+
 /*-- index --*/
 #universe{
     z-index: 1;
@@ -180,9 +221,10 @@ outline: 2px solid blue;
     z-index: 2; 
 }
 
-#sun {
-    z-index: 1; 
+#sun{
+    z-index: 12;
 }
+
 /*--------------------------- Neptune ---------------------------*/
 .neptune-container {
     position: absolute;
@@ -197,7 +239,7 @@ outline: 2px solid blue;
 
 .neptune{
     border-radius: 50%;
-    background: url(./assets/planets2/neptune.png);
+    background: url(./assets/planets/neptune.svg);
     box-shadow: 0em 0em 1em #253378, inset 0.1em -0.2em 1em #bad2ff4a;
     background-repeat: repeat;
     background-size: 210%;
@@ -223,7 +265,7 @@ outline: 2px solid blue;
 
 .uranus{
     border-radius: 50%;
-    background: url(./assets/planets2/uranus.png);
+    background: url(./assets/planets/uranus.svg);
     box-shadow: 5px 7px 13px 4px #14484f, inset 14px 3px 19px #268895;
     background-repeat: repeat;
     background-size: 210%;
@@ -267,7 +309,7 @@ outline: 2px solid blue;
 
 .saturn{
     border-radius: 50%;
-    background: url(./assets/planets2/saturn.png);
+    background: url(./assets/planets/saturn.svg);
     box-shadow: inset 0px -1px 71px #70560e61, -2px -2px 71px #ffe226cc;
     background-repeat: repeat;
     background-size: 210%;
@@ -312,7 +354,7 @@ outline: 2px solid blue;
 
 .jupiter{
     border-radius: 50%;
-    background: url(./assets/planets2/jupiter.png);
+    background: url(./assets/planets/jupiter.svg);
     box-shadow: inset -20px -18px 65px #775a31b0, -1px -3px 65px #ad7323;
     background-repeat: repeat;
     background-size: 210%;
@@ -338,7 +380,7 @@ outline: 2px solid blue;
 
 .mars{
     border-radius: 50%;
-    background: url(./assets/planets2/mars.png);
+    background: url(./assets/planets/mars.svg);
     box-shadow:  33px 33px 65px #511400,
                 -3px 0px 65px #d73600;
     background-repeat: repeat;
@@ -365,7 +407,7 @@ outline: 2px solid blue;
 
 .earth{
     border-radius: 205px;
-    background: url(./assets/planets2/earth.png);
+    background: url(./assets/planets/earth.svg);
     box-shadow: 0em 0em 1em #111e44, inset 0.1em -0.2em 1em #355cd2;
     background-repeat: repeat;
     background-size: 200% 100%;
@@ -395,7 +437,7 @@ outline: 2px solid blue;
 
 .earth-moon{
     border-radius: 50%;
-    background: url(./assets/planets2/mercury.png);
+    background: url(./assets/planets/mercury.svg);
     box-shadow:  inset -1px 1px 8px #a4a4a4, -2px 0px 8px #f6f6f6;
     background-repeat: repeat;
     background-size: 100%;
@@ -420,7 +462,7 @@ outline: 2px solid blue;
 
 .venus{
     border-radius: 50%;
-    background: url(./assets/planets2/venus.png);
+    background: url(./assets/planets/venus.svg);
     box-shadow: 0em 0em 1em #000, 0.1em -0.2em 1em #f0d08b;
     background-repeat: repeat;
     background-size: 210%;
@@ -446,7 +488,7 @@ outline: 2px solid blue;
 
 .mercury{
     border-radius: 50%;
-    background: url(./assets/planets2/mercury.png);
+    background: url(./assets/planets/mercury.svg);
     box-shadow:  0em 0em 1em #303030,
                 0.1em -0.2em 1em #7e7e7e;
     background-repeat: repeat;
@@ -467,22 +509,47 @@ outline: 2px solid blue;
     border-radius: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     border:  1px solid white;
 }
 
 .sun{
     border-radius: 50%;
-    background: url(./assets/planets2/sun.png);
-    box-shadow:  2px 7px 60px #cf8e57, inset -10px -5px 60px #ffcab1;
+    background: url(./assets/planets/sun.svg);
+    box-shadow:  inset 4px 0px 60px #cf8e57, inset -10px -5px 60px #ffcab1;
     background-repeat: repeat;
     background-size: 200% 100%;
+    position: relative;
 }
 
 .sun-container > canvas {
+    /*
     height: 160px;
     width: 160px;
+    */
     animation: sun-rotation 9500ms linear infinite;
+}
+
+.top-sun{
+    position: absolute;
+    bottom: 0;
+    background: url(./assets/planets/top-sun.svg);
+    background-repeat: repeat;
+    background-size: 200% 100%;
+    z-index: 12;
+    clip-path: ellipse(80px 80px at 50% 100%);
+}
+
+
+.bottom-sun{
+    position: absolute;
+    top: 0;
+    background: url(./assets/planets/bottom-sun.svg);
+    background-repeat: repeat;
+    background-size: 200% 100%;
+    z-index: 1;
+    clip-path: ellipse(80px 80px at 50% 0%);
 }
 
 /*--------------------------- Key frames neptune ---------------------------*/
@@ -603,7 +670,7 @@ outline: 2px solid blue;
     }
     37.5% {
         transform: translate(-162.5px, 23.75px) rotate(135deg);
-    }
+    } 
     50% {
         transform: translate(-230px, 0px) rotate(180deg);
     }

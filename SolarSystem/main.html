@@ -34,9 +34,9 @@
             <div id="mars" class="planet mars-container" data-planet="mars" data-bs-toggle="modal" data-bs-target="#infoModal">
                 <canvas class="mars"></canvas>
             </div>
-            <div id="earth" class="planet earth-container" data-planet="earth">
+            <div id="earth" class="planet earth-container" data-planet="earth" data-bs-toggle="modal" data-bs-target="#infoModal">
                 <canvas class="earth"></canvas>
-                <div class="earth-orbit" data-bs-toggle="modal" data-bs-target="#infoModal">
+                <div class="earth-orbit">
                     <div class="moon-container">
                         <canvas class="earth-moon"></canvas>
                     </div>
@@ -48,8 +48,9 @@
             <div id="mercury" class="planet mercury-container" data-planet="mercury" data-bs-toggle="modal" data-bs-target="#infoModal">
                 <canvas class="mercury"></canvas>
             </div>
-            <div id="sun" class="planet sun-container" data-planet="sun" data-bs-toggle="modal" data-bs-target="#infoModal">
-                <canvas class="sun"></canvas>
+            <div  class="planet sun-container" data-planet="sun" data-bs-toggle="modal" data-bs-target="#infoModal">
+                <canvas class="top-sun"></canvas>
+                <canvas class="bottom-sun"></canvas>
             </div>
         </div>
 
@@ -63,9 +64,9 @@
             </svg>
           </button>
         </p>
-        <div style="min-height: 120px; z-index: 99;">
+        <div class="collapse-custom">
           <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body" style="width: 300px;">
+            <div class="card-custom card card-body" style="width: 150px;">
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="changeView3D">
                 <label class="form-check-label" for="changeView3D">
