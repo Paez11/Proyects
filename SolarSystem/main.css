@@ -229,15 +229,20 @@ outline: 2px solid blue;
     position: absolute;
     height: 870px;
     width: 870px;
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 93954ms;
 }
 
 .neptune{
     border-radius: 50%;
+    position: fixed;
+    left: -3.5%;
     background: url(./assets/planets/neptune.svg);
     box-shadow: 0em 0em 1em #253378, inset 0.1em -0.2em 1em #bad2ff4a;
     background-repeat: repeat;
@@ -247,7 +252,7 @@ outline: 2px solid blue;
 .neptune-container > canvas {
     height: 60px;
     width: 60px;
-    animation: neptune-translation 93954ms linear infinite, neptune-rotation 6500ms linear infinite;
+    animation: rotation 6500ms linear infinite;
 }
 
 /*--------------------------- Uranus ---------------------------*/
@@ -255,15 +260,20 @@ outline: 2px solid blue;
     position: absolute;
     height: 750px;
     width: 750px;
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 73954ms;
 }
 
 .uranus{
     border-radius: 50%;
+    position: fixed;
+    left: -3.5%;
     background: url(./assets/planets/uranus.svg);
     box-shadow: 5px 7px 13px 4px #14484f, inset 14px 3px 19px #268895;
     background-repeat: repeat;
@@ -273,22 +283,23 @@ outline: 2px solid blue;
 .uranus-container > canvas {
     height: 50px;
     width: 50px;
-    animation: uranus-translation 73954ms linear infinite, uranus-rotation 8000ms linear infinite;
+    animation: rotation 8000ms linear infinite;
 }
 
 .uranus-orbit{
-    position: absolute;
-    height: 104px;
-    width: 95px;
+    position: fixed;
+    height: 106px;
+    width: 92px;
+    left: -6.2%;
     border-radius: 100%;
-    animation: uranus-translation 73954ms linear infinite;
+    animation: translation 73954ms linear infinite, rotation 5000ms linear infinite;
 }
 
 .uranus-ring 
 {
     width:  90px;
     height: 100px;
-    border-inline: solid 9px #268895;
+    border-inline: solid 9px #268895df;
     border-radius: 60%;
     position: absolute;
     transform: rotate3d(1,1,0,95deg);
@@ -299,15 +310,20 @@ outline: 2px solid blue;
     position: absolute;
     height: 650px;
     width: 650px;
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 53954ms;
 }
 
 .saturn{
     border-radius: 50%;
+    position: fixed;
+    left: -5.5%;
     background: url(./assets/planets/saturn.svg);
     box-shadow: inset 0px -1px 71px #70560e61, -2px -2px 71px #ffe226cc;
     background-repeat: repeat;
@@ -317,22 +333,24 @@ outline: 2px solid blue;
 .saturn-container > canvas {
     height: 75px;
     width: 75px;
-    animation: saturn-translation 53954ms linear infinite, saturn-rotation 7000ms linear infinite;
+    animation: rotation 7000ms linear infinite;
 }
 
 .saturn-orbit{
-    position: absolute;
-    height: 112px;
-    width: 186px;
-    border-radius: 100%;
-    animation: saturn-translation 53954ms linear infinite;
+    position: fixed;
+    height: 130px;
+    width: 160px;
+    left: -14%;
+    top: 41%;
+    border-radius: 50%;
+    animation: rotation 53954ms linear infinite;
 }
 
 .saturn-ring 
 {
     width:  184px;
     height: 120px;
-    border-inline: solid 35px #b8b08d;
+    border-inline: solid 35px #b8b08dd8;
     border-radius: 60%;
     position: absolute;
     transform: rotate3d(1,0,0,75deg);
@@ -346,13 +364,18 @@ outline: 2px solid blue;
     width: 550px;
     border-radius: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 43954ms;
 }
 
 .jupiter{
     border-radius: 50%;
+    position: fixed;
+    left: -8.5%;
     background: url(./assets/planets/jupiter.svg);
     box-shadow: inset -20px -18px 65px #775a31b0, -1px -3px 65px #ad7323;
     background-repeat: repeat;
@@ -362,7 +385,7 @@ outline: 2px solid blue;
 .jupiter-container > canvas {
     height: 95px;
     width: 95px;
-    animation: jupiter-translation 43954ms linear infinite, jupiter-rotation 5000ms linear infinite;
+    animation: rotation 5000ms linear infinite;
 }
 
 /*--------------------------- Mars ---------------------------*/
@@ -372,13 +395,18 @@ outline: 2px solid blue;
     width: 450px;
     border-radius: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 33954ms;
 }
 
 .mars{
     border-radius: 50%;
+    position: fixed;
+    left: -3.5%;
     background: url(./assets/planets/mars.svg);
     box-shadow:  33px 33px 65px #511400,
                 -3px 0px 65px #d73600;
@@ -389,7 +417,7 @@ outline: 2px solid blue;
 .mars-container > canvas {
     height: 30px;
     width: 30px;
-    animation: mars-translation 33954ms linear infinite, mars-rotation 6000ms linear infinite;
+    animation: rotation 6000ms linear infinite;
 }
 
 /*--------------------------- Earth ---------------------------*/
@@ -399,13 +427,18 @@ outline: 2px solid blue;
     width: 350px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 23954ms
 }
 
 .earth{
-    border-radius: 205px;
+    border-radius: 50%;
+    position: fixed;
+    left: -6%;
     background: url(./assets/planets/earth.svg);
     box-shadow: 0em 0em 1em #111e44, inset 0.1em -0.2em 1em #355cd2;
     background-repeat: repeat;
@@ -415,23 +448,24 @@ outline: 2px solid blue;
 .earth-container > canvas {
     height: 40px;
     width: 40px;
-    animation: earth-translation 23954ms linear infinite, earth-rotation 6000ms linear infinite;
+    animation: rotation 6000ms linear infinite;
 }
 
 .earth-orbit{
-    position: absolute;
+    position: fixed;
     height: 60px;
     width: 60px;
+    left: -9%;
     border-radius: 100%;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
-    animation: earth-translation 23954ms linear infinite;
+    animation: translation 23954ms linear infinite;
 }
 
 .moon-container {
     position: absolute;
     height: 100%;
     width: 100%;
-    animation: moon-orbit 12000ms linear infinite;
+    animation: translation 12000ms linear infinite;
 }
 
 .earth-moon{
@@ -454,13 +488,18 @@ outline: 2px solid blue;
     width: 250px;
     border-radius: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 13954ms
 }
 
 .venus{
     border-radius: 50%;
+    position: fixed;
+    left: -7%;
     background: url(./assets/planets/venus.svg);
     box-shadow: 0em 0em 1em #000, 0.1em -0.2em 1em #f0d08b;
     background-repeat: repeat;
@@ -470,7 +509,7 @@ outline: 2px solid blue;
 .venus-container > canvas {
     height: 35px;
     width: 35px;
-    animation: venus-translation 13954ms linear infinite, venus-rotation 7000ms linear infinite;
+    animation: rotation 7000ms linear infinite;
 }
 
 /*--------------------------- Mercury ---------------------------*/
@@ -480,13 +519,18 @@ outline: 2px solid blue;
     width: 150px;
     border-radius: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 0.5px solid rgba(255, 255, 255, 0.26);
+    animation-name: translation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 3954ms
 }
 
 .mercury{
     border-radius: 50%;
+    position: fixed;
+    left: -3.5%;
     background: url(./assets/planets/mercury.svg);
     box-shadow:  0em 0em 1em #303030,
                 0.1em -0.2em 1em #7e7e7e;
@@ -497,7 +541,7 @@ outline: 2px solid blue;
 .mercury-container > canvas {
     height: 10px;
     width: 10px;
-    animation: mercury-translation 3954ms linear infinite, mercury-rotation 4054ms linear infinite;
+    animation: rotation 4054ms linear infinite;
 }
 
 /*--------------------------- Sun ---------------------------*/
@@ -522,11 +566,7 @@ outline: 2px solid blue;
 }
 
 .sun-container > canvas {
-    /*
-    height: 100px;
-    width: 100px;
-    */
-    animation: sun-rotation 9500ms linear infinite;
+    animation: rotation 9500ms linear infinite;
 }
 
 .top-sun{
@@ -548,129 +588,17 @@ outline: 2px solid blue;
 }
 
 
-/*--------------------------- Key frames neptune ---------------------------*/
-@keyframes neptune-translation {
+/*--------------------------- Key frames ---------------------------*/
+
+@keyframes translation {
     0%{
-        transform: rotate(0deg) translate(435px) rotate(0deg);
+        transform: rotateZ( 0deg);
     }
     100%{
-        transform: rotate(360deg) translate(435px) rotate(360deg); 
-    }
-}
-@keyframes neptune-rotation {
-    to{background-position: 200% 0;}
+        transform: rotateZ(360deg);
+    }   
 }
 
-/*--------------------------- Key frames uranus ---------------------------*/
-@keyframes uranus-translation {
-    0%{
-        transform: rotate(0deg) translate(375px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(375px) rotate(360deg); 
-    }
-}
-@keyframes uranus-rotation {
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames saturn ---------------------------*/
-@keyframes saturn-translation {
-    0%{
-        transform: rotate(0deg) translate(325px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(325px) rotate(360deg); 
-    }
-}
-@keyframes saturn-rotation {
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames jupiter ---------------------------*/
-@keyframes jupiter-translation {
-    0%{
-        transform: rotate(0deg) translate(275px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(275px) rotate(360deg); 
-    }
-}
-@keyframes jupiter-rotation {
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames mars ---------------------------*/
-@keyframes mars-translation {
-    0%{
-        transform: rotate(0deg) translate(226px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(226px) rotate(360deg); 
-    }
-}
-@keyframes mars-rotation {
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames earth ---------------------------*/
-@keyframes earth-translation {
-    0%{
-        transform: rotate(0deg) translate(174px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(174px) rotate(360deg); 
-    }
-}
-
-@keyframes moon-orbit {
-    0% {
-        transform: rotate(0deg) translate(1px) rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg) translate(1px) rotate(360deg);
-    }
-}
-@keyframes earth-rotation {
-    to{background-position: -200% 0;}
-}
-
-/*--------------------------- Key frames venus ---------------------------*/
-@keyframes venus-translation {
-    0%{
-        transform: rotate(0deg) translate(125px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(125px) rotate(360deg); 
-    }
-}
-@keyframes venus-rotation {
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames mercury ---------------------------*/
-@keyframes mercury-translation {
-    0%{
-        transform: rotate(0deg) translate(75px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(75px) rotate(360deg); 
-    }
-}
-
-@keyframes mercury-rotation{
-    to{background-position: 200% 0;}
-}
-
-/*--------------------------- Key frames sun ---------------------------*/
-@keyframes sun-translation {
-    0%{
-        transform: rotate(0deg) translate(0px) rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg) translate(0px) rotate(360deg); 
-    }
-}
-@keyframes sun-rotation {
-    to{background-position: 200% 0;}
+@keyframes rotation {
+    to{background-position: 200% 0;} 
 }

@@ -102,12 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundColor = 'lightblue';
         link2D.disabled = true;
         link3D.disabled = false; 
-        console.log("3d");
       } else if (radio2D.checked) {
         document.body.style.backgroundColor = 'lightgreen'; 
         link2D.disabled = false;
         link3D.disabled = true;
-        console.log("2d");
       }
     }
 
