@@ -2,25 +2,74 @@ document.addEventListener('DOMContentLoaded', function () {
     let planets;
 
     fetch('main.json')
-    .then(response => response.json())
-    .then(data => {
-        planets = data.planets;
-    })
-    .catch(error => console.error('Error loading the JSON file:', error));
-    console.log(planets);
+        .then(response => response.json())
+        .then(data => {
+            planets = data.planets;
+        })
+        .catch(error => console.error('Error loading the JSON file:', error));
 
-    let activePlanetElement = undefined;
+    let activePlanetElement = null;
+
+    // ---------------------------------------------------------------
+    // Modal propio (reemplaza bootstrap.Modal)
+    // ---------------------------------------------------------------
+    const modalElement = document.getElementById('infoModal');
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop-custom';
+    document.body.appendChild(backdrop);
+
+    function openModal() {
+        modalElement.classList.add('show');
+        modalElement.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+        modalElement.classList.remove('show');
+        modalElement.setAttribute('aria-hidden', 'true');
+        if (activePlanetElement) {
+            activePlanetElement.classList.remove('selected');
+            activePlanetElement = null;
+        }
+    }
+
+    // Cierra solo si el clic fue en el fondo, no en el contenido del modal
+    modalElement.addEventListener('click', (event) => {
+        if (event.target === modalElement) {
+            closeModal();
+        }
+    });
+
+    // Cerrar con la tecla Escape
+    /*
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modalElement.classList.contains('show')) {
+            closeModal();
+        }
+    });
+    */
+   
+    document.addEventListener('click', (event) => {
+        const isClickInsidePanel = panel.contains(event.target);
+        const isClickOnButton = toggleBtn.contains(event.target);
+
+        if (panel.classList.contains('show') && !isClickInsidePanel && !isClickOnButton) {
+            panel.classList.remove('show');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
 
     function updateModal(planetData) {
         const modalTitle = document.getElementById('infoModalLabel');
         const modalTableBody = document.getElementById('modal-table-body');
 
-        // Update modal title
+        // Actualizar título del modal
         modalTitle.textContent = planetData.title;
-    
-        // Clear previous table body content
+
+        // Limpiar contenido anterior de la tabla
         modalTableBody.innerHTML = '';
-        // Populate table body with new content
+
+        // Rellenar la tabla con los datos del planeta
         planetData.features.forEach(feature => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -29,89 +78,63 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             modalTableBody.appendChild(row);
         });
-    
-        // Show modal
-        //const modalElement = document.getElementById('infoModal');
-        //const modal = new bootstrap.Modal(modalElement);
-
-        //modal.show();
     }
-    
-    // Event listeners for planet elements. Full the modal with the array info
+
+    // Listeners para cada planeta: llenar y abrir el modal
     document.querySelectorAll('.planet').forEach(planetElement => {
         planetElement.addEventListener('click', () => {
             const planetKey = planetElement.getAttribute('data-planet');
-            const planetData = planets[planetKey];
+            const planetData = planets && planets[planetKey];
+
+            if (!planetData) return;
+
             activePlanetElement = document.querySelector(`.${planetKey}-container`);
-            if (planetData) {
-                updateModal(planetData);
-                //initializeModalListeners();
-                /**
-                $('#infoModal').modal('show').on('shown.bs.modal', () => {
-                    toggleBorderStyle({ target: activePlanetElement });
-                });
-                */
-            }
+            updateModal(planetData);
+            activePlanetElement.classList.add('selected');
+            openModal();
         });
     });
 
-    //target and select the border-planet that is click
-    function initializeModalListeners() {
-        const modalElement = document.getElementById('infoModal')
+    // ---------------------------------------------------------------
+    // Collapse propio (reemplaza data-bs-toggle="collapse")
+    // ---------------------------------------------------------------
+    const toggleBtn = document.getElementById('togglePanelBtn');
+    const panel = document.getElementById('collapseWidthExample');
 
-        modalElement.addEventListener('shown.bs.modal', () => {
-            if (activePlanetElement) {
-                toggleBorderStyle({ target: activePlanetElement });
-                console.log("abre -->", activePlanetElement);
-                activePlanetElement.classList.add('selected');
-            }
-        });
-    
-        modalElement.addEventListener('hidden.bs.modal', () => {
-            if (activePlanetElement) {
-                toggleBorderStyle({ target: activePlanetElement });
-                console.log("cierra -->", activePlanetElement);
-                activePlanetElement.classList.remove('selected');
-            }
-        });
-    }
+    toggleBtn.addEventListener('click', () => {
+        const isOpen = panel.classList.toggle('show');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
 
-    //change the border of the container for each planet when select one
-    function toggleBorderStyle(event) {
-        const element = event.target;
-        if (element.classList.contains('selected')) {
-            console.log("event -->", event);
-            element.classList.remove('selected');
-            element.style.border = '0.5px solid rgba(255, 255, 255, 80%)'; // Revert to original style
-        } else {
-            element.classList.add('selected');
-            element.style.border = '0.5px solid rgba(255, 255, 255, 0.26)';
-        }
-    }
-});
+        // Disparar la animación completa, aunque sueltes el clic rápido
+        toggleBtn.classList.remove('clicked');
+        void toggleBtn.offsetWidth; // fuerza reflow para poder re-disparar si haces doble click seguido
+        toggleBtn.classList.add('clicked');
+    });
 
-document.addEventListener('DOMContentLoaded', () => {
+    toggleBtn.addEventListener('animationend', () => {
+        toggleBtn.classList.remove('clicked');
+    });
+
+    // ---------------------------------------------------------------
+    // Cambio de vista 2D / 3D
+    // ---------------------------------------------------------------
     const radio3D = document.getElementById('changeView3D');
     const radio2D = document.getElementById('changeView2D');
     const link3D = document.querySelector('link[href="main3d.css"]');
     const link2D = document.querySelector('link[href="main.css"]');
 
-    //change style view
     function changeViewStyle() {
-      if (radio3D.checked) {
-        document.body.style.backgroundColor = 'lightblue';
-        link2D.disabled = true;
-        link3D.disabled = false; 
-      } else if (radio2D.checked) {
-        document.body.style.backgroundColor = 'lightgreen'; 
-        link2D.disabled = false;
-        link3D.disabled = true;
-      }
+        if (radio3D.checked) {
+            link2D.disabled = true;
+            link3D.disabled = false;
+        } else if (radio2D.checked) {
+            link2D.disabled = false;
+            link3D.disabled = true;
+        }
     }
 
-    // Añadir eventos a los inputs de radio
     radio3D.addEventListener('change', changeViewStyle);
     radio2D.addEventListener('change', changeViewStyle);
-    
+
     changeViewStyle();
 });
