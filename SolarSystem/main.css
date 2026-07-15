@@ -12,6 +12,7 @@
 }
 
 body{
+    overflow: hidden;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -45,22 +46,6 @@ body{
     background: rgba(0, 0, 0, 0.5);
 }
 
-/*
-.modal-backdrop-custom {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    opacity: 0;
-    z-index: 1049;
-    transition: opacity 0.15s linear;
-    pointer-events: none;
-}
-
-.modal-backdrop-custom.show {
-    opacity: 0.5;
-    pointer-events: auto;
-}
-*/
 
 /* Collapse propio */
 .collapse-custom {
@@ -106,6 +91,7 @@ body{
     border-radius: 3.5%;
     background-origin: border-box;
     background-clip: content-box, border-box;
+    padding-top: 5%;
 }
 .modal-body{
     border: 1px solid;
@@ -115,6 +101,7 @@ body{
     border-top: 0px;
     background-origin: border-box;
     background-clip: content-box, border-box;
+    padding-bottom: 5%;
 }
 
 .table-custom{
@@ -130,28 +117,16 @@ body{
     padding-left: 15px;
 }
 
-@media (min-width: 576px){
-    .modal-dialog {
-        max-width: var(--bs-modal-width);
-        margin-right: auto;
-        /* margin-left: auto; */
-    }
+.modal-dialog {
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
 }
 
-.modal-backdrop {
-    --bs-backdrop-zindex: 1050;
-    --bs-backdrop-bg: #000;
-    --bs-backdrop-opacity: 0.5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--bs-backdrop-zindex);
-    width: 100vw;
-    height: 100vh;
-}
-
-.modal-backdrop.show {
-    opacity: 0;
+.modal-title {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.25rem;
 }
 
 .btn-position {
@@ -184,10 +159,7 @@ body{
 .custom-btn:hover {
 background-color: rgba(0, 0, 0, 0.1); 
 }
-.custom-btn:focus,
-.custom-btn:focus-visible {
-outline: 2px solid blue;
-}
+
 .custom-btn:active {
     background-color: rgba(245, 245, 245, 0.373);
 }
@@ -211,6 +183,7 @@ outline: 2px solid blue;
 }
 
 .card-custom{
+    padding: 1rem;
     background-color: transparent;
     color: whitesmoke;
     pointer-events: auto;
@@ -229,20 +202,50 @@ outline: 2px solid blue;
     justify-content: space-between;
 }
 
-.card{
-    --bs-card-border-width: var(--bs-border-width);
-    --bs-card-border-color: rgb(0 0 0 / 0%);
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.form-check-input:checked[type=radio] {
-    --bs-form-check-bg-image: url();
-}
 .form-check-input {
-    --bs-form-check-bg: #ffffff1f;
-    margin-top: .11em;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    background-color: #ffffff1f;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
 }
+
 .form-check-input:checked {
     background-color: #0d6efd42;
+    border-color: #0d6efd;
+    position: relative;
+}
+
+.form-check-input:checked::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: #0d6efd;
+    transform: translate(-50%, -50%);
+}
+
+.form-check-input:focus-visible {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+.form-check-label {
+    cursor: pointer;
 }
 
 /*-- index --*/

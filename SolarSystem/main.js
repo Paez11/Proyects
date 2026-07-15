@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let activePlanetElement = null;
 
-    // ---------------------------------------------------------------
-    // Modal propio (reemplaza bootstrap.Modal)
-    // ---------------------------------------------------------------
     const modalElement = document.getElementById('infoModal');
 
     const backdrop = document.createElement('div');
